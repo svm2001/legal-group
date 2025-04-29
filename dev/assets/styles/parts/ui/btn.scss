@@ -1,0 +1,27 @@
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 46px;
+  border: none;
+  background: $white;
+  cursor: pointer;
+  overflow: hidden;
+  transition: ease-in-out $transition;
+
+  &__text {
+    position: relative;
+    z-index: 2;
+    white-space: nowrap;
+    font-size: 16px;
+  }
+}

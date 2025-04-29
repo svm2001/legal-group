@@ -1,0 +1,14 @@
+-
+  const defaultHeaderProps = {
+      classes: '',
+  }
+
+mixin header(props = defaultHeaderProps, ...dataset)
+  -
+    const checkProps = {
+        links: props.links ? props.links : defaultHeaderProps.links,
+        classes: props.classes ? props.classes : defaultHeaderProps.classes,
+    }
+
+  header.header(class=`${checkProps.classes}`)&attributes(...dataset)
+    .container Header

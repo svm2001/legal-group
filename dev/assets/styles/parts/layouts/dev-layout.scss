@@ -1,0 +1,27 @@
+.dev-layout {
+  padding-top: 83px;
+
+  &__header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    padding: 16px 0;
+    background: #124F2E;
+
+    &-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+    }
+
+    a {
+      font-size: 24px;
+      color: #aaf186;
+      transition: .3s;
+      text-decoration: none;
+    }
+  }
+}

@@ -1,0 +1,6 @@
+# Ignore artifacts:
+node_module
+public
+package-lock.json
+.idea
+.cursor

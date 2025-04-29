@@ -1,0 +1,14 @@
+-
+  const defaultFooterProps = {
+      classes: '',
+  }
+
+mixin footer(props = defaultFooterProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultFooterProps.classes,
+    }
+
+  footer.footer
+    .container Footer
+

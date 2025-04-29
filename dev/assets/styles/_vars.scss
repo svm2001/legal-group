@@ -1,0 +1,19 @@
+:root {
+  //fonts
+  --primary-font: Montserrat, sans-serif;
+
+  //colors
+  --white: #ffffff;
+
+  // Other
+  --transition: 0.3s;
+}
+
+// Fonts
+$primary-font: var(--primary-font);
+
+// colors
+$white: var(--white);
+
+// Other
+$transition: var(--transition);
