@@ -30,6 +30,7 @@ mixin callBackModal(props = defaultCallBackModalProps)
         +input({
           isRequired: true,
           validateName: 'name',
+          autocomplete: false,
           placeholder: 'Ваше имя',
           name: 'bitrix-reserved-name',
           classes: 'input--required'
@@ -39,6 +40,7 @@ mixin callBackModal(props = defaultCallBackModalProps)
         +input({
           isRequired: true,
           validateName: 'email',
+          autocomplete: false,
           placeholder: 'Электронная почта',
           name: 'bitrix-reserved-email',
           classes: 'input--required'
@@ -48,6 +50,7 @@ mixin callBackModal(props = defaultCallBackModalProps)
         +input({
           isRequired: true,
           validateName: 'phone',
+          autocomplete: false,
           placeholder: 'Ваш телефон',
           name: 'bitrix-reserved-phone',
           classes: 'input--required'
