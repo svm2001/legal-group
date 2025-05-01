@@ -1,0 +1,68 @@
+-
+  const defaultCallBackModalProps = {
+      classes: '',
+      title: '',
+      name: false,
+      email: false,
+      phone: false,
+      message: false,
+      agreement: true
+  }
+
+mixin callBackModal(props = defaultCallBackModalProps)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultCallBackModalProps.classes,
+        title: props.title ? props.title : defaultCallBackModalProps.title,
+        name: props.name ? props.name : defaultCallBackModalProps.name,
+        email: props.email ? props.email : defaultCallBackModalProps.email,
+        phone: props.phone ? props.phone : defaultCallBackModalProps.phone,
+        message: props.message ? props.message : defaultCallBackModalProps.message,
+        agreement: props.agreement ? props.agreement : defaultCallBackModalProps.agreement,
+    }
+
+  include ../ui/input
+  include ../ui/checkbox
+  form.callBackModal(class=checkProps.classes, action="", data-validate, novalidate)
+    h2.callBackModal__title=checkProps.title
+    .callBackModal__fields
+      if checkProps.name
+        +input({
+          isRequired: true,
+          validateName: 'name',
+          placeholder: 'Ваше имя',
+          name: 'bitrix-reserved-name',
+          classes: 'input--required'
+        })
+
+      if checkProps.email
+        +input({
+          isRequired: true,
+          validateName: 'email',
+          placeholder: 'Электронная почта',
+          name: 'bitrix-reserved-email',
+          classes: 'input--required'
+        })
+
+      if checkProps.phone
+        +input({
+          isRequired: true,
+          validateName: 'phone',
+          placeholder: 'Ваш телефон',
+          name: 'bitrix-reserved-phone',
+          classes: 'input--required'
+        }, { 'data-input-mask': 'phone'})
+
+      if checkProps.agreement
+        +checkbox({
+          isRequired: true,
+          validateName: 'agreement',
+          text: 'Согласие с обработкой персональных данных',
+          name: 'bitrix-reserved-agreement'
+        }, { 'data-input-name': 'agreement' })
+            .callBackModal__agreement Согласие с обработкой&nbsp;
+                a(href="javascript:void(0);" target="_blank") персональных данных
+
+    button.btn--arrow(type='submit') Отправить
+      include ../assets/icon-system/icon-arrow-right
+

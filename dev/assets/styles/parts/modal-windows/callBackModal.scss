@@ -1,0 +1,43 @@
+.callBackModal {
+  max-width: 420px;
+  &__title {
+    margin-bottom: 35px;
+    font-size: 50px;
+    color: $primary;
+    font-weight: 500;
+    line-height: 100%;
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+  }
+
+  .btn--arrow {
+    margin-top: 60px;
+  }
+
+  &__agreement {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .callBackModal {
+    max-width: 100%;
+    width: 100%;
+
+    &__title {
+      font-size: 30px;
+    }
+
+    &__agreement {
+      font-size: 10px;
+    }
+
+    .btn--arrow {
+      margin-top: 35px;
+    }
+  }
+}

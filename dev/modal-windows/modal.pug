@@ -1,7 +1,8 @@
 -
   const defaultModalProps = {
       id: 'modal',
-      classes: ''
+      classes: '',
+      side: 'right',
   }
 
 mixin modal(props = defaultModalProps)
@@ -9,13 +10,14 @@ mixin modal(props = defaultModalProps)
     const checkProps = {
         id: props.id ? props.id : defaultModalProps.id,
         classes: props.classes ? props.classes : defaultModalProps.classes,
+        side: props.side ? props.side : defaultModalProps.side
     }
 
-  .hystmodal.modal(id=checkProps.id, aria-hidden="true", class=checkProps.classes)
+  .hystmodal.modal(id=checkProps.id, aria-hidden="true", class=checkProps.classes data-side=checkProps.side)
     .hystmodal__wrap
       .hystmodal__window(role="dialog", aria-modal="true")
         button.hystmodal__close.btn-reset(data-hystclose)
-          span.modal__close-icon
-            include ../assets/icon-system/icon-cross
+          span Закрыть
+          include ../assets/icon-system/icon-cross
         if block
           block

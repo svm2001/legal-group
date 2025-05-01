@@ -4,9 +4,23 @@
 
   //colors
   --white: #ffffff;
+  --black: #000000;
+  --dark: #111111;
+  --dark2: #333333;
+  --text: #393D53;
+  --text2: #3A3F51;
+  --text3: #2F3647;
+  --text4: #657181;
+  --text5: #464850;
+  --text6: #999999;
+  --primary: #299987;
+  --primary-dark: #20635C;
+  --primary-light: #E4F4F1;
+  --primary-lighter: #75BFB3;
+  --modal-bg: #70DDCB;
 
   // Other
-  --transition: 0.3s;
+  --transition: 0.3s ease-in-out;
 }
 
 // Fonts
@@ -14,6 +28,20 @@ $primary-font: var(--primary-font);
 
 // colors
 $white: var(--white);
+$black: var(--black);
+$dark: var(--dark);
+$dark2: var(--dark2);
+$text: var(--text);
+$text2: var(--text2);
+$text3: var(--text3);
+$text4: var(--text4);
+$text5: var(--text5);
+$text6: var(--text6);
+$primary: var(--primary);
+$primary-dark: var(--primary-dark);
+$primary-light: var(--primary-light);
+$primary-lighter: var(--primary-lighter);
+$modal-bg: var(--modal-bg);
 
 // Other
 $transition: var(--transition);

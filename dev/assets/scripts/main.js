@@ -15,5 +15,9 @@ export default function main() {
   phoneMask()
   smoothScrolling()
 
+  if(document.querySelector('.kronos-online-form-button')) {
+    document.querySelector('.kronos-online-form-button').remove()
+  }
+
   // setTimeout(() => preloader.hide(), 0)
 }

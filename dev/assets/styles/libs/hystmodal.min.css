@@ -19,7 +19,7 @@
 }
 .hystmodal__shadow--show {
   pointer-events: auto;
-  opacity: 0.6;
+  opacity: 0.4;
 }
 .hystmodal {
   position: fixed;
@@ -71,40 +71,76 @@
     opacity 0.2s ease 0s;
   transform: scale(0.9);
   opacity: 0;
+  display: flex;
+  align-items: center;
 }
 .hystmodal--active .hystmodal__window {
   transform: scale(1);
   opacity: 1;
 }
+
 .hystmodal__close {
-  position: absolute;
-  z-index: 10;
-  top: 0;
-  right: -40px;
-  display: block;
-  width: 30px;
-  height: 30px;
-  background-color: transparent;
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' stroke='%23fff' stroke-linecap='square' stroke-miterlimit='50' stroke-width='2' d='M22 2L2 22'/%3E%3Cpath fill='none' stroke='%23fff' stroke-linecap='square' stroke-miterlimit='50' stroke-width='2' d='M2 2l20 20'/%3E%3C/svg%3E");
-  background-size: 100% 100%;
-  border: none;
-  font-size: 0;
-  cursor: pointer;
-  outline: none;
+    position: absolute;
+    top: 30px!important;
+    right: 30px!important;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    width: fit-content !important;
+    height: auto !important;
+
+    svg {
+        width: 25px;
+        height: 25px;
+    }
+
+    span {
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #6A6E7E;
+    }
 }
+
 .hystmodal__close:focus {
   outline: 2px dotted #afb3b9;
   outline-offset: 2px;
 }
+
+@media (min-width: 1200px) {
+    [data-side="right"] .hystmodal__wrap {
+        padding-right: 0!important;
+    }
+
+    [data-side="right"] .hystmodal__window {
+        min-height: 100dvh;
+        margin: 0;
+        min-width: 700px;
+        max-width: 700px;
+        opacity: 1;
+        transform: scale(1) translateX(100%);
+        align-self: flex-end;
+        pointer-events: auto;
+        transition: .4s ease;
+        padding: 97px!important;
+
+        .hystmodal__close {
+            top: 40px!important;
+            right: 50px!important;
+        }
+    }
+
+    [data-side="right"].hystmodal--active .hystmodal__window {
+        transform: scale(1) translateX(0);
+    }
+}
+
 @media (max-width: 767px) {
   .hystmodal__close {
     top: 10px;
     right: 10px;
     width: 24px;
     height: 24px;
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' stroke='%23111' stroke-linecap='square' stroke-miterlimit='50' stroke-width='2' d='M22 2L2 22'/%3E%3Cpath fill='none' stroke='%23111' stroke-linecap='square' stroke-miterlimit='50' stroke-width='2' d='M2 2l20 20'/%3E%3C/svg%3E");
   }
   .hystmodal__window {
     margin: 0;

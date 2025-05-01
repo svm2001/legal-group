@@ -1,8 +1,268 @@
 .footer {
-  padding: 50px 0;
-  background-color: darkslategray;
-  margin-top: auto;
-  display: flex;
-  align-items: center;
-  color: $white;
+  padding: 59px 54px 27px 54px;
+  position: relative;
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+
+    &:before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0, .8);
+      backdrop-filter: grayscale(100%);
+    }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-position: 0 30%;
+      pointer-events: none;
+      user-select: none;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 160px;
+    max-width: 1920px;
+    margin: auto;
+  }
+
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    width: 460px;
+
+    img {
+      width: 188px;
+    }
+  }
+
+  &__nav {
+    margin-right: auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+
+    &-col {
+      display: flex;
+      flex-direction: column;
+      gap: 29px;
+      width: 240px;
+    }
+
+    a {
+      color: $white;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__contacts, &__address {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+
+      &-title {
+        font-size: 15px;
+        font-weight: 500;
+        color: #787878;
+      }
+
+      &-link {
+        font-size: 24px;
+        font-weight: 500;
+        color: $white;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      &-text {
+        font-size: 20px;
+        max-width: 293px;
+        color: $white;
+        font-weight: 500;
+      }
+    }
+  }
+
+  &__contacts {
+    margin-right: 120px;
+  }
+
+  &__bot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__copy, &__policy, &__dev {
+    color: #999999;
+    font-size: 15px;
+    font-weight: 500;
+
+    a {
+      color: $primary;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__copy {
+    width: 460px;
+  }
+
+  &__policy {
+    text-decoration: underline;
+    margin-right: auto;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+@media (max-width: 1700px) {
+  .footer {
+    &__copy, &__logo {
+      width: auto;
+    }
+
+    &__contacts {
+      margin-right: 0;
+    }
+
+    &__inner {
+      gap: 100px;
+    }
+
+    &__policy, &__nav {
+      margin-right: 0;
+
+      &-col {
+        width: 140px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1300px) {
+  .footer {
+    &__nav {
+      flex-direction: column;
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .footer {
+    padding: 39px 12px 21px 12px;
+
+    .container {
+      padding: 0;
+    }
+
+    &__bg img {
+      object-position: 50% 0%;
+    }
+
+    &__top {
+      flex-direction: column;
+    }
+
+    &__logo {
+      margin-bottom: 37px;
+    }
+
+    &__nav {
+      flex-direction: row;
+      margin-bottom: 37px;
+      width: 100%;
+      gap: 0;
+
+      a {
+        font-size: 16px;
+      }
+
+      &-col {
+        width: 50%;
+      }
+    }
+
+    &__contacts, &__address {
+      &-item {
+        &-title {
+          font-size: 13px;
+          margin-bottom: 3px;
+        }
+
+        &-link {
+          font-size: 20px;
+        }
+
+        &-text {
+          font-size: 20px;
+          max-width: 100%;
+        }
+      }
+    }
+
+    &__address {
+      margin-top: 35px;
+    }
+
+    &__inner {
+      gap: 60px;
+    }
+
+    &__copy, &__policy, &__dev {
+      font-size: 13px;
+    }
+
+    &__bot {
+      flex-wrap: wrap;
+      gap: 24px 0;
+      align-items: flex-start;
+    }
+
+    &__copy, &__policy {
+      width: 50%;
+    }
+
+    &__copy {
+      padding-right: 20px;
+    }
+
+    &__dev {
+      width: 50%;
+      margin-left: auto;
+    }
+  }
 }

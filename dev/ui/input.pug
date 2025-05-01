@@ -6,9 +6,10 @@
       label: '',
       placeholder: '',
       required: false,
+      isRequired: false,
       disabled: false,
       classes: '',
-      messageText: 'Обязательное поле',
+      messageText: '',
       messageIsShow: false,
       autocomplete: 'off'
   }
@@ -22,6 +23,7 @@ mixin input(props = defaultInputProps, ...dataset)
         label: props.label ? props.label : defaultInputProps.label,
         placeholder: props.placeholder ? props.placeholder : defaultInputProps.placeholder,
         required: props.required ? props.required : defaultInputProps.required,
+        isRequired: props.isRequired ? props.isRequired : defaultInputProps.isRequired,
         disabled: props.disabled ? props.disabled : defaultInputProps.disabled,
         classes: props.classes ? props.classes : defaultInputProps.classes,
         messageText: props.messageText ? props.messageText : defaultInputProps.messageText,
@@ -46,6 +48,7 @@ mixin input(props = defaultInputProps, ...dataset)
       data-input-name=checkProps.validateName,
       data-input-mask=mask,
       required=checkProps.required,
+      isRequired=checkProps.isRequired,
       placeholder=checkProps.placeholder,
       autocomplete=checkProps.autocomplete
     )

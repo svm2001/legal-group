@@ -1,6 +1,28 @@
 -
   const defaultHeaderProps = {
       classes: '',
+      links: [
+          {
+            name: 'О компании ',
+            link: 'about',
+          },
+          {
+              name: 'Наши услуги',
+              link: 'services',
+          },
+          {
+              name: 'Прайс-лист',
+              link: 'price-list',
+          },
+          {
+              name: 'Отзывы',
+              link: 'reviews',
+          },
+          {
+              name: 'Контакты',
+              link: 'contacts',
+          },
+      ]
   }
 
 mixin header(props = defaultHeaderProps, ...dataset)
@@ -10,5 +32,57 @@ mixin header(props = defaultHeaderProps, ...dataset)
         classes: props.classes ? props.classes : defaultHeaderProps.classes,
     }
 
+  include ../modal-windows/modal
   header.header(class=`${checkProps.classes}`)&attributes(...dataset)
-    .container Header
+    .header-container
+        .header__inner
+            a.header__logo(href='/')
+              img(src="./icons/logo.svg")
+              img(src="./icons/logo-text.svg")
+            .header__info
+                nav
+                    each link in checkProps.links
+                        button(data-smooth-scroling=`#${link.link}`)= link.name
+                .header__info-inner
+                    a.header__tel(href="tel: +74952121245") 8 (495) 212-12-45
+                    span.header__workhours(title='Часы работы') Пн. - сб. 10:00 - 19:00
+            button.btn--header(type='button' data-hystmodal='#header-form') Заказать звонок
+            .header__socials
+                a(href="https://wa.me/+79997131245", target="_blank", title='WhatsApp')
+                  include ../assets/icon-system/icon-wa
+                a(href="https://t.me/+79997131245" target="_blank", title='Telegram')
+                  include ../assets/icon-system/icon-tg
+            .header__burger
+                a.header__burger-wa(href="https://wa.me/+79997131245", target="_blank")
+                    include ../assets/icon-system/icon-wa-mob
+                button.header__burger-trigger
+                    include ../assets/icon-system/icon-burger-closed
+                button.header__burger-open
+                    include ../assets/icon-system/icon-burger-opened
+  .burger.js-burger
+    .burger__inner
+        nav
+          each link in checkProps.links
+              button(data-smooth-scroling=`#${link.link}`)= link.name
+        .burger__contact
+            a(href="tel: +74952121245") 8 (495) 212-12-45
+            button.btn--header.js-burger-modal(type='button', data-hystmodal='#header-form') Заказать звонок
+        .burger__socials
+            a(href="https://t.me/+79997131245" target="_blank")
+                include ../assets/icon-system/icon-tg-mob
+            a(href="https://wa.me/+79997131245", target="_blank")
+              include ../assets/icon-system/icon-wa-mob
+
+  +modal({
+    id: 'header-form',
+    classes: 'header__form',
+    side: 'right',
+  })
+    include ../modal-windows/callback-modal
+    +callBackModal({
+      title: 'Закажите обратный звонок',
+      name: true,
+      phone: true
+    })
+
+

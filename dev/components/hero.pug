@@ -1,0 +1,46 @@
+-
+  const defaultHeroProps = {
+      classes: '',
+      links: [
+          {
+            name: 'О компании ',
+            link: 'about',
+          },
+          {
+              name: 'Наши услуги',
+              link: 'services',
+          },
+          {
+              name: 'Прайс-лист',
+              link: 'price-list',
+          },
+          {
+              name: 'Отзывы',
+              link: 'reviews',
+          },
+          {
+              name: 'Контакты',
+              link: 'contacts',
+          },
+      ]
+  }
+
+mixin hero(props = defaultHeroProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultHeroProps.classes,
+    }
+
+  section.hero(class=`${checkProps.classes}`)&attributes(...dataset)
+    img.lazy.hero__bg(data-src='./images/hero-bg.jpg', src='./images/no-image.jpg' alt='Лигал Групп' )
+    .hero-container
+        .hero__inner
+            h1 Клиент всегда&nbsp;прав.
+                br
+                | Докажем с&nbsp;точки&nbsp;
+                br.hide
+                | зрения закона.
+
+            button.btn--arrow.js-amo-button Получить консультацию
+                include ../assets/icon-system/icon-arrow-right
+

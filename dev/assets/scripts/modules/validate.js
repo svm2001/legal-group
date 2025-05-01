@@ -8,10 +8,10 @@ export default function validate() {
   forms.forEach(form => {
     form.addEventListener('submit', event => {
       event.preventDefault()
-      const inputs = form.querySelectorAll('.input'),
+      const inputs = form.querySelectorAll('.input, .checkbox, .textarea'),
         dataReqexp = {
           fio: /^[А-ЯЁа-яё]+(-[А-ЯЁа-яё]+)? [А-ЯЁа-яё]+( [А-ЯЁа-яё]+)?$/,
-          personName: /^[а-яёА-ЯЁ ]+$/u,
+          personName: /^[а-яёА-ЯЁA-Za-z]+$/u,
           email: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
           numbers: /^\d+$/,
         },
@@ -21,63 +21,79 @@ export default function validate() {
           return {
             set: () => {
               if (message) message.innerText = msg
+              const isCheckbox = el.querySelector('input[type="checkbox"]')
               el.classList.add(
-                el.classList.contains('input')
-                  ? 'input--error'
-                  : 'textarea--error',
+                isCheckbox
+                  ? 'checkbox--error'
+                  : el.classList.contains('input')
+                    ? 'input--error'
+                    : 'textarea--error',
               )
             },
             remove: () => {
+              const isCheckbox = el.querySelector('input[type="checkbox"]')
               el.classList.remove(
-                el.classList.contains('input')
-                  ? 'input--error'
-                  : 'textarea--error',
+                isCheckbox
+                  ? 'checkbox--error'
+                  : el.classList.contains('input')
+                    ? 'input--error'
+                    : 'textarea--error',
               )
               if (message) message.innerText = ''
             },
           }
         },
         validateInput = input => {
-          const field = input.querySelector('input'),
+          const field = input.querySelector('input, textarea'),
             name = field.getAttribute('data-input-name'),
             valueField = field.value
 
-          if (field.hasAttribute('required')) {
-            if (valueField !== '') {
+          if (field.hasAttribute('isrequired')) {
+            if (field.type === 'file') {
+              field.files.length > 0
+                ? error(input).remove()
+                : error(input, 'Выберите файл').set()
+            } else if (valueField === '') {
+              error(input, 'Обязательное поле').set()
+            } else if (valueField !== '') {
               switch (name) {
                 case 'name':
-                  if (
-                    valueField.length >= 2 &&
-                    valueField.match(dataReqexp.personName)
-                  ) {
-                    error(input).remove()
-                  } else {
-                    error(input, 'Введите корректное имя').set()
-                  }
+                  valueField.length >= 2 &&
+                  valueField.match(dataReqexp.personName)
+                    ? error(input).remove()
+                    : error(input, 'Введите корректное имя').set()
+                  break
+                case 'fio':
+                  valueField.length > 5 && valueField.match(dataReqexp.fio)
+                    ? error(input).remove()
+                    : error(input, 'Введите корректное ФИО').set()
                   break
                 case 'email':
-                  if (valueField.match(dataReqexp.email)) {
-                    error(input).remove()
-                  } else {
-                    error(input, 'Введите корректный E-mail').set()
-                  }
+                  valueField.match(dataReqexp.email)
+                    ? error(input).remove()
+                    : error(input, 'Введите корректный E-mail').set()
                   break
                 case 'phone':
-                  if (valueField.length === 18) {
-                    error(input).remove()
-                  } else {
-                    error(input, 'Введите полный номер телефона').set()
-                  }
+                  valueField.length === 18
+                    ? error(input).remove()
+                    : error(input, 'Введите полный номер телефона').set()
+                  break
+                case 'agreement':
+                  const checkboxInput = input.querySelector(
+                    'input[type="checkbox"]',
+                  )
+                  const checkboxWrapper = checkboxInput.closest('.checkbox')
+                  checkboxInput.checked
+                    ? checkboxWrapper.classList.remove('input--error')
+                    : checkboxWrapper.classList.add('input--error')
                   break
                 default:
-                  if (valueField.length !== 0) {
-                    error(input).remove()
-                  } else {
-                    error(input).set()
-                  }
+                  valueField.length !== 0
+                    ? error(input).remove()
+                    : error(input).set()
               }
             } else {
-              error(input).set()
+              // error(input).set()
             }
           }
         },
@@ -90,7 +106,7 @@ export default function validate() {
           inputs.forEach(input => {
             input.addEventListener('click', () => {
               if (form.getAttribute('data-validate')) {
-                const field = input.querySelector('input')
+                const field = input.querySelector('input, textarea')
 
                 field.addEventListener('input', () => validateInput(input))
                 checkFields()
@@ -102,40 +118,102 @@ export default function validate() {
           let errors = 0
 
           inputs.forEach(input => {
-            if (input.classList.contains('input--error')) errors += 1
+            const field = input.querySelector('input, textarea')
+            if (field.type === 'checkbox') {
+              if (!field.checked) {
+                input.classList.add('input--error')
+                errors += 1
+              } else {
+                input.classList.remove('input--error')
+              }
+            } else if (field.type === 'file' && field.hasAttribute('isrequired')) {
+              if (!field.files.length) {
+                input.classList.add('input--error')
+                errors += 1
+              } else {
+                input.classList.remove('input--error')
+              }
+            } else if (input.classList.contains('input--error')) {
+              errors += 1
+            }
           })
 
-          const formBody = form.querySelector('.form__body')
-          const successMsg = form.querySelector('.form__success')
-          const errorMsg = form.querySelector('.form__error')
-
           if (errors === 0) {
+            const submitBtn = form.querySelector('button[type="submit"]')
             const formData = new FormData()
-            const formInputs = form.querySelectorAll('input')
-            formInputs.forEach(input => formData.append(input.name, input.value),)
+            const formInputs = form.querySelectorAll('input, textarea')
 
-            console.table(Object.fromEntries(formData))
+            const successText = 'Ваше сообщение отправлено'
+            const errorText = 'Ошибка при отправке формы'
+            const resultModal = document.querySelector('#result-modal')
 
-            $.ajax({
-              type: 'POST',
-              url: form.getAttribute('action') + '?ajax=Y',
-              data: formData,
-              processData: false,
-              contentType: false,
-              success: function (response) {
-                console.log('success')
-              },
-              error: function (error) {
-                console.error('Ошибка при отправке формы: ', error.responseText)
-              },
+            const clearForm = () => formInputs.forEach(input => input.type === 'checkbox' ? input.checked = false : input.value = '')
+            formInputs.forEach(input => {
+              if (input.type === 'checkbox') {
+                formData.append(input.name, input.checked)
+              } else if (input.type === 'file') {
+                const file = input.files[0]
+                if (file) {
+                  formData.append(input.name, file)
+                }
+              } else {
+                formData.append(input.name, input.value)
+              }
             })
 
+            submitBtn.classList.add('loading')
+            console.table(Object.fromEntries(formData))
+
+            setTimeout(() => {
+              $.ajax({
+                type: 'POST',
+                url: form.getAttribute('action') + '?ajax=Y',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: response => {
+                  setTimeout(() => {
+                    submitBtn.classList.remove('loading')
+                    clearForm()
+
+                    const currentModal = form.closest('.hystmodal')
+                    resultModal.querySelector('.modal__title').innerText = successText
+                    if (currentModal && window.hystModal) window.hystModal.close()
+
+                    if (resultModal && window.hystModal) {
+                      setTimeout(() => {
+                        window.hystModal.open('#result-modal')
+                      }, 300)
+                    }
+                  }, 500)
+                },
+                error: error => {
+                  setTimeout(() => {
+                    console.error('Ошибка: ', error)
+                    submitBtn.classList.remove('loading')
+                    clearForm()
+                    resultModal.classList.add('modal--error')
+                    resultModal.querySelector('.modal__title').innerText = errorText
+
+                    const currentModal = form.closest('.hystmodal')
+                    if (currentModal && window.hystModal) window.hystModal.close()
+
+                    if (window.hystModal) {
+                      setTimeout(() => {
+                        window.hystModal.open('#result-modal')
+                      }, 300)
+                    }
+                  }, 500)
+                },
+              })
+            }, 1000)
           }
         }
 
       lifeValidate()
       checkFields()
       form.setAttribute('data-validate', 'true')
+      form.setAttribute('novalidate', '')
       validate()
     })
   })

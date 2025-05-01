@@ -1,0 +1,44 @@
+-
+  const defaultTextareaProps = {
+      name: '',
+      validateName: '',
+      label: '',
+      placeholder: '',
+      required: false,
+      disabled: false,
+      classes: '',
+      messageText: '',
+      messageIsShow: false,
+      autocomplete: 'off'
+  }
+
+mixin textarea(props = defaultTextareaProps, ...dataset)
+  -
+    const checkProps = {
+        name: props.name ? props.name : defaultTextareaProps.name,
+        validateName: props.validateName ? props.validateName : defaultTextareaProps.validateName,
+        label: props.label ? props.label : defaultTextareaProps.label,
+        placeholder: props.placeholder ? props.placeholder : defaultTextareaProps.placeholder,
+        required: props.required ? props.required : defaultTextareaProps.required,
+        disabled: props.disabled ? props.disabled : defaultTextareaProps.disabled,
+        classes: props.classes ? props.classes : defaultTextareaProps.classes,
+        messageText: props.messageText ? props.messageText : defaultTextareaProps.messageText,
+        messageIsShow: props.messageIsShow ? props.messageIsShow : defaultTextareaProps.messageIsShow,
+        autocomplete: props.autocomplete ? props.autocomplete : defaultTextareaProps.autocomplete
+    }
+
+  .textarea(
+    class=`${checkProps.classes} ${checkProps.disabled ? 'disabled' : ''} ${checkProps.messageIsShow ? 'input--show-message' : ''}`
+  )&attributes(...dataset)
+    if (checkProps.label !== '')
+      span.input__label= checkProps.label
+    textarea.input__field(
+      type=checkProps.type,
+      name=checkProps.name,
+      data-input-name=checkProps.validateName,
+      required=checkProps.required,
+      placeholder=checkProps.placeholder,
+      autocomplete=checkProps.autocomplete
+    )
+    .input__message
+      span= checkProps.messageText

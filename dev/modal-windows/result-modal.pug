@@ -1,0 +1,22 @@
+include ./modal
+
+-
+  const defaultResultModalProps = {
+    classes: '',
+    id: 'result-modal'
+  }
+
+mixin resultModal(props = defaultResultModalProps)
+  -
+    const checkProps = {
+      classes: props.classes ? props.classes : defaultResultModalProps.classes,
+      id: props.id ? props.id : defaultResultModalProps.id
+    }
+
+  +modal({
+    id: checkProps.id,
+    side: 'center',
+    classes: `modal--result ${checkProps.classes}`
+  })
+    .modal__content
+      h2.modal__title

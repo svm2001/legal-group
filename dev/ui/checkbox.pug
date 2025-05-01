@@ -27,7 +27,12 @@ mixin checkbox(props = defaultCheckboxProps, ...dataset)
         type=checkProps.type,
         name=checkProps.name,
         value=checkProps.value,
-        checked=checkProps.checked
+        checked=checkProps.checked,
+        disabled=checkProps.disabled
       )
-      span.checkbox__text(data-location=checkProps.city)= checkProps.text
       span.checkbox__decore
+      span.checkbox__text
+        if block
+          block
+        else
+          = checkProps.text

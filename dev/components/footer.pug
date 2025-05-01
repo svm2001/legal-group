@@ -10,5 +10,38 @@ mixin footer(props = defaultFooterProps, ...dataset)
     }
 
   footer.footer
-    .container Footer
+    .footer__bg
+      img(src="./images/footer-bg.png" alt="Лигал Групп")
+    .container
+        .footer__inner
+            .footer__top
+                .footer__logo
+                    img(src="./icons/logo-text-white.svg")
+                .footer__nav
+                    .footer__nav-col
+                        a(href='javascript:void(0);') О компании
+                        a(href='javascript:void(0);') Наши услуги
+                        a(href='javascript:void(0);') Прайс-лист
+                    .footer__nav-col
+                        a(href='javascript:void(0);') Преимущества
+                        a(href='javascript:void(0);') Отзывы
+                        a(href='javascript:void(0);') Контакты
+                .footer__contacts
+                    .footer__contacts-item
+                        .footer__contacts-item-title Офис в москве
+                        a.footer__contacts-item-link(href="tel:+74952121245") 8 (495) 212-12-45
+                    .footer__contacts-item
+                        .footer__contacts-item-title Электронная почта:
+                        a.footer__contacts-item-link(href="mailto:2121245@ligalgrupp.ru") 2121245@ligalgrupp.ru
+                .footer__address
+                    .footer__address-item
+                        .footer__address-item-title Адрес:
+                        .footer__address-item-text г. Москва, улица Крымский Вал, дом 3, стр. 2, офис 209.
+            .footer__bot
+                .footer__copy © legalgroup Юридическая компания
+                a.footer__policy(href='javascript:void(0);') Политика конфиденциальности
+                .footer__dev Разработка сайта —&nbsp;
+                    a(href="https://wesma.agency/", target="_blank" title="Веб-студия WESMA") Wesma
+
+
 

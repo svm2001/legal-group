@@ -2,6 +2,8 @@ extends ../../layouts/layout
 block vars
 block content
     -
-    include ../../ui/btn
-    .container
-        +btn({ name: '123', classes: 'js-amo-button' })
+    include ../../modal-windows/result-modal
+    include ../../components/hero
+    .wrapper
+        +hero
+    +resultModal
