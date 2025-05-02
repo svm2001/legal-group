@@ -1,0 +1,56 @@
+-
+  const defaultContactsProps = {
+      classes: '',
+  }
+
+mixin contacts(props = defaultContactsProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultContactsProps.classes,
+    }
+
+  section.contacts(class=`${checkProps.classes}` id='contacts')&attributes(...dataset)
+      include ../assets/icon-system/icon-contacts-bg
+      .container
+          .contacts__inner
+              h2.contacts__title Контакты
+              .contacts__content
+                  .contacts__map(id="map" data-map-coords="[55.729316, 37.609173]" data-initial-zoom="17")
+                  .contacts__info
+                      .contacts__info-item
+                          .contacts__info-item-title Приглашаем Вас посетить наш офис:
+                          .contacts__info-item-value Москва, Крымский Вал 3 стр.2 офис 209. Метро Октябрьская
+                      .contacts__info-item
+                          .contacts__info-item-title Наш телефон:
+                          .contacts__info-item-value
+                              a(href="tel:+74952121245") 8 (495) 212-12-45
+                              include ../assets/icon-system/icon-call
+                      .contacts__info-item
+                          .contacts__info-item-title Вы можете написать нам по электронной почте:
+                          .contacts__info-item-value
+                              a(href="mailto:2121245@ligalgrupp.ru") 2121245@ligalgrupp.ru
+                              include ../assets/icon-system/icon-message
+                      .contacts__info-hours
+                          include ../assets/icon-system/icon-clock
+                          span График работы: Пн - сб 10:00 - 19:00
+                      button.btn--arrow(data-hystmodal='#contacts-form')
+                          span ОТПРАВИТЬ СООБЩЕНИЕ
+                              include ../assets/icon-system/icon-arrow-right
+                      .contacts__info-btns
+                          a(href="https://wa.me/+79997131245", target="_blank" title="WhatsApp")
+                              include ../assets/icon-system/icon-wa-mob
+                          a(href="https://t.me/+79997131245" target="_blank" title="Telegram")
+                              img(src="./icons/tg.png" alt="Лигал Групп")
+      +modal({
+        id: 'contacts-form',
+        classes: 'header__form',
+        side: 'right',
+      })
+          include ../modal-windows/callback-modal
+          +callBackModal({
+            title: 'Оставить заявку',
+            name: true,
+            phone: true,
+            email: true,
+            message: true
+          })

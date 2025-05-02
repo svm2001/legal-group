@@ -2,9 +2,14 @@ import './index.scss'
 import main from '@/assets/scripts/main'
 import tabs from "@/assets/scripts/modules/tabs.js"
 import { reviewSlider } from "@/assets/scripts/modules/reviewSlider.js"
+import { prices } from "@/assets/scripts/modules/prices.js"
+import { contacts } from "@/assets/scripts/modules/contacts.js"
 window.onload = () => {
   main()
   reviewSlider()
+  prices()
+  contacts()
+  
   const services = document.querySelector('.services')
 
   document.querySelectorAll('.js-amo-button').forEach(button => {

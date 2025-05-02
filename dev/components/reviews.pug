@@ -54,7 +54,7 @@ mixin reviews(props = defaultReviewsProps, ...dataset)
         slider: props.slider ? props.slider : defaultReviewsProps.slider,
     }
 
-  section.reviews(class=`${checkProps.classes}`)&attributes(...dataset)
+  section.reviews(class=`${checkProps.classes}` id='reviews')&attributes(...dataset)
       .plug
       .container
           .reviews__inner

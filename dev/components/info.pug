@@ -9,7 +9,7 @@ mixin info(props = defaultInfoProps, ...dataset)
         classes: props.classes ? props.classes : defaultInfoProps.classes,
     }
 
-  section.info(class=`${checkProps.classes}`)&attributes(...dataset)
+  section.info(class=`${checkProps.classes}` id='advantages')&attributes(...dataset)
       .container
           .info__inner
               h2.info__title Почему нужно выбрать

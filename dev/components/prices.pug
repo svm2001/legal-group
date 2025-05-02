@@ -1,0 +1,102 @@
+-
+  const defaultPricesProps = {
+      classes: '',
+      list: [
+          {
+              name: 'Изучение документов (1 день)',
+              price: 10000,
+          },
+          {
+              name: 'Ознакомление с материалами дела (за 1 том)',
+              price: 10000,
+          },
+          {
+              name: 'Составление досудебной претензии, уведомления',
+              price: 5000,
+          },
+          {
+              name: 'Составление  искового заявления',
+              price: 15000,
+          },
+          {
+              name: 'Составление отзыва на исковое заявления, возражений',
+              price: 15000,
+          },
+          {
+              name: 'Составление апелляционной, кассационной и надзорной жалобы',
+              price: 15000,
+          },
+          {
+              name: 'Составление отзыва на апелляционную (кассационную) жалобу',
+              price: 15000,
+          },
+          {
+              name: 'Составление жалобы в Верховный Суд РФ',
+              price: 30000,
+          },
+          {
+              name: 'Участие в суде апелляционной, кассационной инстанции (1 судодень)',
+              price: 10000,
+          },
+          {
+              name: 'Составление досудебной претензии, уведомления',
+              price: 5000,
+          },
+          {
+              name: 'Составление  искового заявления',
+              price: 15000,
+          },
+          {
+              name: 'Составление отзыва на исковое заявления, возражений',
+              price: 15000,
+          },
+          {
+              name: 'Составление апелляционной, кассационной и надзорной жалобы',
+              price: 15000,
+          },
+          {
+              name: 'Составление отзыва на апелляционную (кассационную) жалобу',
+              price: 15000,
+          },
+          {
+              name: 'Составление жалобы в Верховный Суд РФ',
+              price: 30000,
+          },
+          {
+              name: 'Участие в суде апелляционной, кассационной инстанции (1 судодень)',
+              price: 10000,
+          },
+      ]
+  }
+
+mixin prices(props = defaultPricesProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultPricesProps.classes,
+    }
+
+  section.prices(class=`${checkProps.classes}` id='price-list')&attributes(...dataset)
+      .container
+          .prices__inner
+              h2.prices__title Прайс-лист
+              .prices__list
+                  .prices__list-top
+                      span.prices__list-top-name Гражданское судопроизводство
+                      span.prices__list-top-price стоимость
+                  .prices__list-inner
+                      each item, index in props.list
+                          .prices__list-item
+                              p.prices__list-item-name= item.name
+                              p.prices__list-item-price!= `от <span>${item.price}</span> ₽`
+
+              .prices__bot
+                  button.btn--arrow
+                      span.btn--arrow-text Смотреть все
+                      span.btn--arrow-icon
+                            include ../assets/icon-system/icon-arrow-right
+                  .prices__subtext
+                      p.prices__subtext-item.prices__subtext--star Примечание: стоимость услуг указана без учета обязательных сборов и платежей (гос. пошлина,  услуги нотариуса, иные налоги и сборы).
+                      p.prices__subtext-item При необходимости выезда за пределы города Москвы дополнительно оплачиваются командировочные расходы.
+
+
+

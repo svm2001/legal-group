@@ -9,7 +9,7 @@ mixin about(props = defaultAboutProps, ...dataset)
         classes: props.classes ? props.classes : defaultAboutProps.classes,
     }
 
-  section.about(class=`${checkProps.classes}`)&attributes(...dataset)
+  section.about(class=`${checkProps.classes}` id='about')&attributes(...dataset)
       .container
           .about__inner
               .about__poster

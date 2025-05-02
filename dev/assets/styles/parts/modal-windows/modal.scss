@@ -14,6 +14,11 @@
         max-width: 600px;
         padding: 40px;
         background: #fff;
+
+        @media (max-width: 767px) {
+          border-radius: 4px;
+          overflow: hidden;
+        }
       }
 
       &__close {
@@ -47,6 +52,8 @@
 
     @media (max-width: 767px) {
       padding: 30px!important;
+      border-radius: 4px;
+      overflow: hidden;
     }
   }
 

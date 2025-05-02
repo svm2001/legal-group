@@ -18,7 +18,7 @@
     }
   }
 
-  &--error {
+  &--error, .textarea--error {
     .input {
       &__field {
         border-color: red;
@@ -98,6 +98,31 @@
     font-weight: 500;
     line-height: 1.25em;
     letter-spacing: -0.32px;
+  }
+}
+
+.textarea {
+  position: relative;
+  .input__field {
+    resize: none;
+    font-size: 20px;
+
+    @media (max-width: 767px) {
+      font-size: 18px;
+    }
+  }
+}
+
+.textarea--error {
+  .input {
+    &__field {
+      border-color: red;
+    }
+
+    &__message {
+      display: grid;
+      color: red;
+    }
   }
 }
 

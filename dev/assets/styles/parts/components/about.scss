@@ -1,6 +1,6 @@
 .about {
   background: $white;
-  padding: 135px 0 150px 0;
+  padding: 135px 0 75px 0;
 
   &__inner {
     display: flex;
@@ -100,7 +100,7 @@
 
 @media (max-width: 1199px) {
   .about {
-    padding: 46px 0 77px 0;
+    padding: 46px 0 38px 0;
     &__rounded {
       width: 115px;
     }

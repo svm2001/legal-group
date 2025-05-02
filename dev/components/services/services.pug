@@ -17,7 +17,7 @@ mixin services(props = defaultServicesProps, ...dataset)
         yur: props.yur ? props.yur : defaultServicesProps.yur,
     }
   include services-card
-  section.services(class=`${checkProps.classes}`)&attributes(...dataset)
+  section.services(class=`${checkProps.classes}` id='services')&attributes(...dataset)
       .container
           .services__inner
               h2.services__title Наши услуги

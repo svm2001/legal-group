@@ -11,7 +11,7 @@ export default function validate() {
       const inputs = form.querySelectorAll('.input, .checkbox, .textarea'),
         dataReqexp = {
           fio: /^[А-ЯЁа-яё]+(-[А-ЯЁа-яё]+)? [А-ЯЁа-яё]+( [А-ЯЁа-яё]+)?$/,
-          personName: /^[а-яёА-ЯЁA-Za-z]+$/u,
+          personName: /^[а-яёА-ЯЁA-Za-z]+( [а-яёА-ЯЁA-Za-z]+)?$/u,
           email: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
           numbers: /^\d+$/,
         },
@@ -77,6 +77,11 @@ export default function validate() {
                   valueField.length === 18
                     ? error(input).remove()
                     : error(input, 'Введите полный номер телефона').set()
+                  break
+                case 'message':
+                  valueField.length >= 2
+                    ? error(input).remove()
+                    : error(input, 'Введите сообщение').set()
                   break
                 case 'agreement':
                   const checkboxInput = input.querySelector(

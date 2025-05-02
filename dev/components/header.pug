@@ -42,7 +42,7 @@ mixin header(props = defaultHeaderProps, ...dataset)
             .header__info
                 nav
                     each link in checkProps.links
-                        button(data-smooth-scroling=`#${link.link}`)= link.name
+                        a(href=`#${link.link}`)= link.name
                 .header__info-inner
                     a.header__tel(href="tel: +74952121245") 8 (495) 212-12-45
                     span.header__workhours(title='Часы работы') Пн. - сб. 10:00 - 19:00
@@ -63,7 +63,7 @@ mixin header(props = defaultHeaderProps, ...dataset)
     .burger__inner
         nav
           each link in checkProps.links
-              button(data-smooth-scroling=`#${link.link}`)= link.name
+              a(href=`#${link.link}`)= link.name
         .burger__contact
             a(href="tel: +74952121245") 8 (495) 212-12-45
             button.btn--header.js-burger-modal(type='button', data-hystmodal='#header-form') Заказать звонок

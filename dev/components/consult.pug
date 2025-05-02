@@ -1,0 +1,20 @@
+-
+  const defaultConsultProps = {
+      classes: '',
+  }
+
+mixin consult(props = defaultConsultProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultConsultProps.classes,
+    }
+
+  section.consult(class=`${checkProps.classes}`)&attributes(...dataset)
+      .container
+          .consult__inner
+              h2 Запишитесь онлайн
+                br
+                | на бесплатную консультацию
+              button.btn--arrow.js-amo-button
+                  span Выбрать дату и время
+                      include ../assets/icon-system/icon-arrow-right

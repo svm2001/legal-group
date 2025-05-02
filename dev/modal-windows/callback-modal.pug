@@ -22,6 +22,7 @@ mixin callBackModal(props = defaultCallBackModalProps)
     }
 
   include ../ui/input
+  include ../ui/textarea
   include ../ui/checkbox
   form.callBackModal(class=checkProps.classes, action="", data-validate, novalidate)
     h2.callBackModal__title=checkProps.title
@@ -55,6 +56,16 @@ mixin callBackModal(props = defaultCallBackModalProps)
           name: 'bitrix-reserved-phone',
           classes: 'input--required'
         }, { 'data-input-mask': 'phone'})
+
+      if checkProps.message
+        +textarea({
+          isRequired: true,
+          validateName: 'message',
+          autocomplete: false,
+          placeholder: 'Ваше сообщение',
+          name: 'bitrix-reserved-message',
+          classes: 'input--required'
+        })
 
       if checkProps.agreement
         +checkbox({

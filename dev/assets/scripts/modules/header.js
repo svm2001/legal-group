@@ -27,6 +27,9 @@ export default function header() {
       disablePageScroll(header)
     }
 
+    const links = burger.querySelectorAll('nav a')
+    links.forEach(link => link.addEventListener('click', () => close()))
+
     if(burgerOpen) burgerOpen.addEventListener('click', () => open())
     if(burgerClose) burgerClose.addEventListener('click', () => close())
     if(modalBtn) modalBtn.addEventListener('click', () => close())

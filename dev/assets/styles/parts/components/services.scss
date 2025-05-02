@@ -1,5 +1,6 @@
 .services {
   background: $white;
+  padding-top: 75px;
   padding-bottom: 160px;
 
   &__title {
@@ -376,7 +377,8 @@
 
 @media (max-width: 1199px) {
   .services {
-    padding-bottom: 60px;
+    padding-bottom: 30px;
+    padding-top: 38px;
 
     &__title {
       font-size: 45px;
