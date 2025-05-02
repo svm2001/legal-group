@@ -24,7 +24,6 @@ export function prices() {
   }
 
   const fadeList = (show) => {
-    listInner.style.opacity = show ? '1' : '0.66'
     listInner.style.transition = 'opacity 0.3s, height 0.3s'
   }
 
@@ -60,6 +59,9 @@ export function prices() {
       }, 100)
     })
   }
+
+  showAllBtn.click()
+  setTimeout(() => showAllBtn.click(), 300)
 
   priceElements.forEach(element => {
     const price = parseInt(element.textContent)
