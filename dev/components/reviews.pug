@@ -1,0 +1,83 @@
+-
+  const defaultReviewsProps = {
+      classes: '',
+      slider: [
+          {
+            text: `Добрый день! <br> Хочу поблагодарить команду «Лигал Групп. Адвокаты и юристы» за прекрасно выполненную работу. <br>
+            Все было сделано качественно, в оговоренные сроки и за оговоренную изначально стоимость.<br>
+            Также пообщались насчет дальнейшей работы друг с другом.<br>
+            Благодарю и от души рекомендую!
+            `,
+            name: 'ЛЮДМИЛА ПЕТРОПОЛЬСКАЯ',
+            job: 'Директор по развитию'
+          },
+          {
+              text: `У моего дяди случилась неприятность, подрядчик получил деньги и пропал.<br>
+              Я нашла эту компанию, созвонились, специалисты грамотные, сразу объяснили, как мы поступим в этой ситуации ( консультация была бесплатной)
+              <br>Сейчас готовим документы в суд.
+              `,
+              name: 'КОНСТАНТИН КУЛИНИЧ',
+              job: 'Менеджер'
+          },
+          {
+              text: `Анна, спасибо вам огромное! Услуга была оказана в полном объеме, результат оправдал все ожидания. Буду обращаться и впредь. Успехов и процветания в профессиональной сфере!`,
+              name: 'ЕВГЕНИЯ ДОБРОВОЛЬСКАЯ',
+              job: 'Предприниматель'
+          },
+          {
+              text: `Очень быстро и профессионально оказана услуга (обращение в суд). Все договоренности выполнены в срок. Я довольна качеством выполненной работы. Спасибо!`,
+              name: 'ИРИНА МИХАИЛОВА',
+              job: 'Модельер'
+          },
+          {
+              text: `Рекомендую!<br> Обратилась путаницей в голове к за консультацией касательно сложной ситуации по семейному вопросу(раздел имущества). Получила бесплатно четкие профессиональные ответы на все вопросы. Однозначно обращусь в случае необходимости доп.услуг, как к профессионалу`,
+              name: 'КОНСТАНТИН КУЛИНИЧ',
+              job: 'Менеджер'
+          },
+          {
+              text: `Спасибо Анне, она ответила на все мои вопросы по определению порядка общения с ребенком! Сейчас готовим иск и подаем в суд. `,
+              name: 'ЛЮДМИЛА ПЕТРОПОЛЬСКАЯ',
+              job: 'Директор по развитию'
+          },
+          {
+              text: `Узнал о поданном на меня иске за два дня до судебного заседания. Юристы «ЛигалГрупп», единственные, кто откликнулся и взялся подготовится к процессу за столь короткий срок. Несмотря на ограниченное время, Ольга, успела во всех подробностях изучить мою ситуацию и наиболее правильным образом выстроить линию защиты. Благодарю!`,
+              name: 'ИРИНА МИХАИЛОВА',
+              job: 'Модельер'
+          },
+      ]
+  }
+
+mixin reviews(props = defaultReviewsProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultReviewsProps.classes,
+        slider: props.slider ? props.slider : defaultReviewsProps.slider,
+    }
+
+  section.reviews(class=`${checkProps.classes}`)&attributes(...dataset)
+      .plug
+      .container
+          .reviews__inner
+              h2.reviews__title Наши отзывы
+              .reviews__content
+                  .reviews__slider-info
+                      .reviews__slider-counter
+                          span.reviews__slider-counter-value
+                          span.reviews__slider-counter-line
+                          span.reviews__slider-counter-sum
+                      .reviews__slider-arrows
+                          button.reviews__slider-arrows-item.reviews__slider-arrows-item--prev
+                              include ../assets/icon-system/icon-slider-arrow
+                          button.reviews__slider-arrows-item.reviews__slider-arrows-item--next
+                              include ../assets/icon-system/icon-slider-arrow
+                  .reviews__slider.swiper
+                      .swiper-wrapper
+                          each item in checkProps.slider
+                              .swiper-slide
+                                  .reviews__slider-item
+                                      .reviews__slider-item-inner
+                                          include ../assets/icon-system/icon-quote
+                                          p.reviews__slider-item-text!= item.text
+                                      .reviews__slider-item-user
+                                          .reviews__slider-item-user-name= item.name
+                                          .reviews__slider-item-user-job= item.job

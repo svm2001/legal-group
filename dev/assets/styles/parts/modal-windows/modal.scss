@@ -3,6 +3,10 @@
     .hystmodal {
       &__wrap {
         padding: 0 20px;
+
+        @media (max-width: 1199px) {
+          padding: 12px;
+        }
       }
 
       &__window {
@@ -87,6 +91,28 @@
       stroke: #ff8080;
     }
   }
+}
+
+.modal--services-detail {
+  .hystmodal__window {
+    max-width: 900px!important;
+    flex-direction: column;
+  }
+
+  //.hystmodal__close {
+  //  position: sticky;
+  //  z-index: 2;
+  //  top: 0!important;
+  //  padding: 16px 0!important;
+  //  margin-top: -16px;
+  //  width: 100%!important;
+  //  justify-content: flex-end;
+  //  background: $white;
+  //
+  //  &:hover {
+  //    opacity: 1!important;
+  //  }
+  //}
 }
 
 @media (max-width: 1199px) {

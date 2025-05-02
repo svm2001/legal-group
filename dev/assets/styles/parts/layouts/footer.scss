@@ -2,6 +2,10 @@
   padding: 59px 54px 27px 54px;
   position: relative;
 
+  &-container {
+  position: relative;
+}
+
   &__bg {
     position: absolute;
     top: 0;

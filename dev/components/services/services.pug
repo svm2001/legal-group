@@ -1,0 +1,127 @@
+-
+  const defaultServicesProps = {
+      classes: '',
+      fiz: [
+          {
+
+          }
+      ],
+      yur: '',
+  }
+
+mixin services(props = defaultServicesProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultServicesProps.classes,
+        fiz: props.fiz ? props.fiz : defaultServicesProps.fiz,
+        yur: props.yur ? props.yur : defaultServicesProps.yur,
+    }
+  include services-card
+  section.services(class=`${checkProps.classes}`)&attributes(...dataset)
+      .container
+          .services__inner
+              h2.services__title Наши услуги
+              .services__tabs
+                  button.services__tabs-item.active Помощь частным лицам
+                  button.services__tabs-item Юридическая помощь бизнесу
+              .services__content.active
+                  +services-card({
+                    title: 'Семейное право',
+                    description: 'Юрист по семейному праву специализируется на решении юридических вопросов, связанных с семейными делами.',
+                    icon: 'fiz/1',
+                    iconHover: 'fiz/11',
+                    modalId: 'fiz-1'
+                  })
+                      include ../../components/services/content/fiz/1
+
+                  +services-card({
+                    title: 'Вопросы наследства',
+                    description: 'Целью юриста по наследству является обеспечение юридической поддержки и защиты интересов клиентов во всех вопросах, связанных с наследством. ',
+                    icon: 'fiz/2',
+                    iconHover: 'fiz/22',
+                    modalId: 'fiz-2'
+                  })
+                      include ../../components/services/content/fiz/2
+                  +services-card({
+                    title: 'Трудовые споры',
+                    description: 'Юрист по трудовому праву — это профессионал, который специализируется на изучении, анализе и применении нормативных актов, касающихся трудовых отношений между работниками и работодателями.',
+                    icon: 'fiz/3',
+                    iconHover: 'fiz/33',
+                    modalId: 'fiz-3'
+                  })
+                      include ../../components/services/content/fiz/3
+                  +services-card({
+                    title: 'Споры и сделки с недвижимостью',
+                    description: 'Юрист по строительству и спорам с недвижимостью занимается решением проблем, связанных с постройкой домов, покупкой земельных участков и регистрацией права собственности. ',
+                    icon: 'fiz/4',
+                    iconHover: 'fiz/44',
+                    modalId: 'fiz-4'
+                  })
+                      include ../../components/services/content/fiz/4
+                  +services-card({
+                    title: 'Некачественный товар или услуга ',
+                    description: 'Добавить описание услуги ...',
+                    icon: 'fiz/5',
+                    iconHover: 'fiz/55',
+                    modalId: 'fiz-5'
+                  })
+                      include ../../components/services/content/fiz/5
+                  +services-card({
+                    title: 'Юрист по ДТП',
+                    description: 'Юрист по ДТП помогает потерпевшим и виновникам ДТП защищать свои права, получать компенсации и решать все юридические вопросы, связанные с происшествием.',
+                    icon: 'fiz/6',
+                    iconHover: 'fiz/66',
+                    modalId: 'fiz-6'
+                  })
+                      include ../../components/services/content/fiz/6
+              .services__content
+                  +services-card({
+                    title: 'Арбитражные споры',
+                    description: 'Юрист по арбитражным спорам специализируется на представлении интересов доверителей по делам, отнесённым к компетенции арбитражных судов. ',
+                    icon: 'yur/1',
+                    iconHover: 'yur/11',
+                    modalId: 'yur-1'
+                  })
+                      include ../../components/services/content/yur/1
+                  +services-card({
+                    title: 'Налоговое право',
+                    description: 'Юрист по налоговому праву — это эксперт в области права, который специализируется на правовой защите клиентов при взаимоотношениях с налоговыми органами.',
+                    icon: 'yur/2',
+                    iconHover: 'yur/22',
+                    modalId: 'yur-2'
+                  })
+                      include ../../components/services/content/yur/2
+                  +services-card({
+                    title: 'Банкротство юридических лиц',
+                    description: 'Юрист по банкротству юридических лиц — специалист в сфере финансового права, который специализируется на вопросах банкротства компаний.',
+                    icon: 'yur/3',
+                    iconHover: 'yur/33',
+                    modalId: 'yur-3'
+                  })
+                      include ../../components/services/content/yur/3
+                  +services-card({
+                    title: 'Юридическое сопровождение',
+                    description: 'Абонентское юридическое обслуживание — это комплексная юридическая поддержка бизнеса.',
+                    icon: 'yur/4',
+                    iconHover: 'yur/44',
+                    modalId: 'yur-4'
+                  })
+                      include ../../components/services/content/yur/4
+                  +services-card({
+                    title: 'Услуги в области недвижимости и строительства',
+                    description: 'Юрист в области недвижимости и строительства — специалист, который занимается правовыми вопросами, связанными с проектированием, строительством и эксплуатацией строительных объектов.',
+                    icon: 'yur/5',
+                    iconHover: 'yur/55',
+                    modalId: 'yur-5'
+                  })
+                      include ../../components/services/content/yur/5
+                  +services-card({
+                    title: 'Трудовые споры',
+                    description: 'Юрист по трудовому праву - это профессионал, который специализируется на изучении, анализе и применении нормативных актов, касающихся трудовых отношений между работниками и работодателями.',
+                    icon: 'yur/6',
+                    iconHover: 'yur/66',
+                    modalId: 'yur-6'
+                  })
+                      include ../../components/services/content/yur/6
+
+

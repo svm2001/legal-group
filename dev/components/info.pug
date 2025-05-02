@@ -1,0 +1,41 @@
+-
+  const defaultInfoProps = {
+      classes: '',
+  }
+
+mixin info(props = defaultInfoProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultInfoProps.classes,
+    }
+
+  section.info(class=`${checkProps.classes}`)&attributes(...dataset)
+      .container
+          .info__inner
+              h2.info__title Почему нужно выбрать
+                br
+                | Лигал Групп. Адвокаты и юристы
+
+              .info__content
+                  .info__text
+                      p.info__text-item Обращаясь в <span> «Лигал Групп. Адвокаты и юристы»</span>, Вы можете быть уверены в том, что получите <span>качественные юридические услуги</span>. Высокая квалификация наших юристов подтверждена положительной судебной практикой, отзывами клиентов, высоким качеством правовых документов.
+                      p.info__text-item Получить <button class='js-amo-button'>правовую консультацию</button> по судебному спору и анализ перспектив дела, заказать разработку стратегии защиты, поручить представительство и ведение дела, вы можете по телефону или другим контактам:
+                  .info__contacts
+                      .info__contacts-item
+                          .info__contacts-item-links
+                              a(href="tel:+74952121245") 8 (495) 212-12-45
+                              a(href="mailto:2121245@ligalgrupp.ru") 2121245@ligalgrupp.ru
+                          .info__contacts-item-socials
+                              a(href="https://t.me/+79997131245" target="_blank")
+                                  include ../assets/icon-system/icon-tg-info
+                                  | Telegram
+                              a(href="https://wa.me/+79997131245", target="_blank")
+                                  include ../assets/icon-system/icon-wa-info
+                                  | WhatsApp
+                          button.btn--arrow.js-amo-button
+                              span Получить консультацию
+                                  include ../assets/icon-system/icon-arrow-right
+                      .info__contacts-man
+                          img.lazy(data-src='./images/man.jpg', src='./images/no-image.jpg' alt='Лигал Групп')
+
+

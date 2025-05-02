@@ -1,0 +1,269 @@
+.reviews {
+  padding: 154px 0 160px 0;
+  overflow: hidden;
+  position: relative;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+  }
+
+  &__title {
+    font-size: 50px;
+    color: #2F3647;
+    font-weight: 500;
+    position: relative;
+    z-index: 3;
+  }
+
+  &__content {
+    display: flex;
+    align-items: flex-start;
+    gap: 116px;
+    position: relative;
+  }
+
+  &__slider-info {
+    display: flex;
+    flex-direction: column;
+    gap: 190px;
+    position: relative;
+    z-index: 3;
+
+    @media (max-width: 1199px) {
+      display: none;
+    }
+  }
+
+  &__slider-counter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &-value {
+      font-weight: 600;
+      font-size: 15px;
+      color: $primary;
+      display: block;
+      min-width: 17px;
+      max-width: 17px;
+      text-align: center;
+    }
+
+    &-sum {
+      font-weight: 600;
+      font-size: 15px;
+      color: #74808F;
+    }
+
+    &-line {
+      display: block;
+      width: 73px;
+      height: 1px;
+      background: #65718159;
+    }
+  }
+
+  &__slider-arrows {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    &-item {
+      width: 90px;
+      height: 90px;
+      transition: $transition;
+
+      svg circle, svg path {
+        transition: $transition;
+      }
+
+      &:hover svg circle {
+        stroke: $primary;
+        fill: #E4F4F1;
+      }
+
+      &:hover svg path {
+        stroke: $primary;
+      }
+
+      &--next {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .swiper-button-disabled {
+    opacity: .5;
+    pointer-events: none;
+    cursor: default;
+    backdrop-filter: grayscale(100%);
+  }
+
+  &__slider {
+    min-width: 0;
+    overflow: visible!important;
+    .swiper-slide {
+      width: fit-content!important;
+    }
+
+    &-item {
+      width: 356px;
+      padding-bottom: 30px;
+      position: relative;
+
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 43px;
+        height: 2px;
+        background: #B5BBD0;
+      }
+
+      &-inner {
+        transition: $transition;
+        padding: 30px 40px;
+        background: #EAEEF2;
+        height: 667px;
+
+        svg {
+          margin-bottom: 9px;
+
+          path {
+            transition: .2s;
+          }
+        }
+
+        p {
+          font-size: 19px;
+          line-height: 140%;
+          color: #292C38;
+
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 21;
+          line-clamp: 21;
+          overflow: hidden;
+        }
+
+        @media (max-width: 1700px) {
+          height: 467px;
+
+          p {
+            -webkit-line-clamp: 14;
+            line-clamp: 14;
+          }
+        }
+      }
+
+      &-user {
+        margin-top: 21px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        &-name {
+          font-size: 18px;
+          color: #3A3F51;
+          text-transform: uppercase;
+          font-weight: 500;
+        }
+
+        &-job {
+          font-weight: 500;
+          font-size: 14px;
+          color: $primary;
+        }
+      }
+
+      &:hover {
+        .reviews__slider-item-inner {
+          background: #E4F4F1;
+
+          svg path {
+            fill: $primary
+          }
+        }
+      }
+    }
+  }
+
+  .plug {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background: $white;
+    height: 100%;
+    width: 20px;
+
+    @media (max-width: 1199px) {
+      display: none;
+    }
+  }
+
+  .swiper-slide {
+    transition: $transition;
+  }
+
+  .slide-dimmed {
+    opacity: .5;
+    user-select: none;
+  }
+}
+
+
+@media (max-width: 1199px) {
+  .reviews {
+    padding: 80px 0 60px 0;
+
+    &__slider {
+      &-item {
+        width: 280px;
+        padding-bottom: 20px;
+
+        &:before {
+          width: 26px;
+        }
+
+        &-inner {
+          padding: 30px 24px;
+          height: 483px;
+
+          p {
+            font-size: 15px;
+
+            -webkit-line-clamp: 19;
+            line-clamp: 19;
+          }
+        }
+
+        &-user {
+          gap: 4px;
+          &-name {
+            font-size: 15px;
+          }
+
+          &-job {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .reviews {
+    &__title {
+      font-size: 35px;
+    }
+
+    &__inner {
+      gap: 20px;
+    }
+  }
+}

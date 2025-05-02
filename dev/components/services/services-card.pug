@@ -1,0 +1,41 @@
+-
+  const defaultServicesCardProps = {
+      classes: '',
+      title: '',
+      description: '',
+      icon: '',
+      iconHover: '',
+      modalId: '',
+  }
+
+mixin services-card(props = defaultServicesCardProps, ...dataset)
+  -
+    const checkProps = {
+        classes: props.classes ? props.classes : defaultServicesCardProps.classes,
+        title: props.title ? props.title : defaultServicesCardProps.title,
+        description: props.description ? props.description : defaultServicesCardProps.description,
+        icon: props.icon ? props.icon : defaultServicesCardProps.icon,
+        iconHover: props.iconHover ? props.iconHover : defaultServicesCardProps.iconHover,
+        modalId: props.modalId ? props.modalId : defaultServicesCardProps.modalId,
+    }
+
+  .services-card(class=`${checkProps.classes}`)&attributes(...dataset)
+      .services-card__inner
+          h3.services-card__title= checkProps.title
+          p.services-card__description= checkProps.description
+          button.btn(type='button' data-hystmodal=`#${checkProps.modalId}`)
+              span Подробнее
+          .services-card__logo
+              img.services-card__logo-icon.services-card__logo-icon--start(src=`./images/services/${checkProps.icon}.svg` alt=`${checkProps.title}`)
+              img.services-card__logo-icon.services-card__logo-icon--hover(src=`./images/services/${checkProps.iconHover}.svg` alt=`${checkProps.title}`)
+      +modal({
+          id: checkProps.modalId,
+          side: 'center',
+          classes: 'modal--services-detail'
+      })
+          .services-card__modal
+            block
+            .services-card__modal-bottom
+              button.btn--arrow.js-amo-button Записаться на консультацию
+                include ../../assets/icon-system/icon-arrow-right
+              button.services-card__modal-bottom-close Закрыть

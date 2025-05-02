@@ -72,14 +72,6 @@ body.lock {
   }
 }
 
-.container {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  padding: 0 20px;
-  margin: 0 auto;
-}
-
 .page {
   flex: 1 0 auto;
 }
@@ -104,4 +96,12 @@ a {
 
 .kronos-online-form-button {
   display: none!important;
+}
+
+.container {
+  position: relative;
+  padding: 0 12px;
+  max-width: 1368px;
+  width: 100%;
+  margin: 0 auto;
 }
