@@ -10,7 +10,7 @@ export function reviewSlider() {
     slidesPerView: 'auto',
     slidesPerGroup: 1,
     centeredSlides: false,
-    freeMode: true,
+    freeMode: false,
     loop: false,
     initialSlide: 0,
     spaceBetween: 12,
@@ -22,11 +22,11 @@ export function reviewSlider() {
       nextEl: '.reviews__slider-arrows-item--next',
       prevEl: '.reviews__slider-arrows-item--prev'
     },
-    breakpoints: {
-      1200: {
-        freeMode: false,
-      }
-    },
+    // breakpoints: {
+    //   1200: {
+    //     freeMode: false,
+    //   }
+    // },
     on: {
       init: function () {
         if(window.innerWidth > 1199) {
