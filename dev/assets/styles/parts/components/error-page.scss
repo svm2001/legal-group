@@ -1,0 +1,44 @@
+.error-page {
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  img {
+    margin-bottom: 67px;
+    user-select: none;
+    max-width: 47.35%;
+  }
+
+  p {
+    max-width: 388px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 120%;
+    color: #555459;
+    text-align: center;
+    margin-bottom: 81px;
+    text-transform: uppercase;
+  }
+
+  .btn--header {
+    height: 55px;
+    min-width: 247px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .error-page {
+    padding: 0 24px;
+
+    p, img {
+      margin-bottom: 40px;
+      font-size: 16px;
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+}
