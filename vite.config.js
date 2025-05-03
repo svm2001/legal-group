@@ -19,6 +19,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         index: resolve(__dirname, './dev/index.html'),
+        404: resolve(__dirname, './dev/404.html'),
+        500: resolve(__dirname, './dev/500.html'),
       },
       output: {
         entryFileNames: `assets/[name].js`,
