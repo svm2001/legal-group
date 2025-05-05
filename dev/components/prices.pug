@@ -79,21 +79,36 @@ mixin prices(props = defaultPricesProps, ...dataset)
       .container
           .prices__inner
               h2.prices__title Прайс-лист
-              .prices__list
-                  .prices__list-top
-                      span.prices__list-top-name Гражданское судопроизводство
-                      span.prices__list-top-price стоимость
-                  .prices__list-inner
-                      each item, index in props.list
-                          .prices__list-item
-                              p.prices__list-item-name= item.name
-                              p.prices__list-item-price!= `от <span>${item.price}</span> ₽`
+              .prices__list.accordion__list
+                  .accordion__item  
+                    button.prices__list-top.accordion__title.active
+                        span.prices__list-top-name Гражданское судопроизводство
+                        include ../assets/icon-system/icon-accordion
+                    .prices__list-inner.accordion__description.active
+                        each item, index in props.list
+                            .prices__list-item
+                                p.prices__list-item-name= item.name
+                                p.prices__list-item-price!= `от <span>${item.price}</span> ₽`
+                  .accordion__item  
+                    button.prices__list-top.accordion__title
+                        span.prices__list-top-name Уголовное судопроизводство
+                        include ../assets/icon-system/icon-accordion
+                    .prices__list-inner.accordion__description
+                        each item, index in props.list
+                            .prices__list-item
+                                p.prices__list-item-name= item.name
+                                p.prices__list-item-price!= `от <span>${item.price}</span> ₽`  
+                  .accordion__item  
+                    button.prices__list-top.accordion__title
+                        span.prices__list-top-name Очередное судопроизводство
+                        include ../assets/icon-system/icon-accordion
+                    .prices__list-inner.accordion__description
+                        each item, index in props.list
+                            .prices__list-item
+                                p.prices__list-item-name= item.name
+                                p.prices__list-item-price!= `от <span>${item.price}</span> ₽`                          
 
               .prices__bot
-                  button.btn--arrow
-                      span.btn--arrow-text Смотреть все
-                      span.btn--arrow-icon
-                            include ../assets/icon-system/icon-arrow-right
                   .prices__subtext
                       p.prices__subtext-item.prices__subtext--star Примечание: стоимость услуг указана без учета обязательных сборов и платежей (гос. пошлина,  услуги нотариуса, иные налоги и сборы).
                       p.prices__subtext-item При необходимости выезда за пределы города Москвы дополнительно оплачиваются командировочные расходы.

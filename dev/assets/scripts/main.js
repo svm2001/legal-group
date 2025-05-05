@@ -17,6 +17,8 @@ export default function main() {
     document.querySelector('.kronos-online-form-button').remove()
   }
 
+  
+
   setTimeout(() => preloader.hide(), 0)
 }
 
