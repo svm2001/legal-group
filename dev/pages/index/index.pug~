@@ -1,0 +1,23 @@
+extends ../../layouts/layout
+block vars
+block content
+    -
+    include ../../modal-windows/result-modal
+    include ../../components/hero
+    include ../../components/about
+    include ../../components/services/services
+    include ../../components/info
+    include ../../components/reviews
+    include ../../components/consult
+    include ../../components/prices
+    include ../../components/contacts
+    .wrapper
+        +hero
+        +about
+        +services
+        +info
+        +reviews
+        +consult
+        +prices
+        +contacts
+    +resultModal

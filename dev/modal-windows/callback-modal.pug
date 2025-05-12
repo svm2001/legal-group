@@ -75,7 +75,7 @@ mixin callBackModal(props = defaultCallBackModalProps)
           name: 'bitrix-reserved-agreement'
         }, { 'data-input-name': 'agreement' })
             .callBackModal__agreement Согласие с обработкой&nbsp;
-                a(href="javascript:void(0);" target="_blank") персональных данных
+                a(href="javascript:void(0);" target="_blank" data-hystmodal='#policy-modal') персональных данных
 
     button.btn--arrow(type='submit') Отправить
       include ../assets/icon-system/icon-arrow-right
