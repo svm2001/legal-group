@@ -55,21 +55,21 @@ mixin reviews(props = defaultReviewsProps, ...dataset)
     }
 
   section.reviews(class=`${checkProps.classes}` id='reviews')&attributes(...dataset)
-      .plug
+      //.plug
       .container
           .reviews__inner
               h2.reviews__title Наши отзывы
               .reviews__content
-                  .reviews__slider-info
-                      .reviews__slider-counter
-                          span.reviews__slider-counter-value
-                          span.reviews__slider-counter-line
-                          span.reviews__slider-counter-sum
-                      .reviews__slider-arrows
-                          button.reviews__slider-arrows-item.reviews__slider-arrows-item--prev
-                              include ../assets/icon-system/icon-slider-arrow
-                          button.reviews__slider-arrows-item.reviews__slider-arrows-item--next
-                              include ../assets/icon-system/icon-slider-arrow
+                  //.reviews__slider-info
+                      //.reviews__slider-counter
+                      //    span.reviews__slider-counter-value
+                      //    span.reviews__slider-counter-line
+                      //    span.reviews__slider-counter-sum
+                      //.reviews__slider-arrows
+                      //    button.reviews__slider-arrows-item.reviews__slider-arrows-item--prev
+                      //        include ../assets/icon-system/icon-slider-arrow
+                      //    button.reviews__slider-arrows-item.reviews__slider-arrows-item--next
+                      //        include ../assets/icon-system/icon-slider-arrow
                   .reviews__slider.swiper
                       .swiper-wrapper
                           each item in checkProps.slider

@@ -33,48 +33,48 @@ export function reviewSlider() {
           updateSlideStyles(this);
         }
       },
-      slideChange: function () {
-        if(window.innerWidth > 1199) {
-          updateSlideStyles(this);
-        }
-      }
+      // slideChange: function () {
+      //   if(window.innerWidth > 1199) {
+      //     updateSlideStyles(this);
+      //   }
+      // }
     }
   })
 
-  function updateSlideStyles(swiper) {
-    swiper.slides.forEach((slide, index) => {
-      if (index > swiper.activeIndex + 2) {
-        slide.classList.add('slide-dimmed');
-      } else {
-        slide.classList.remove('slide-dimmed');
-      }
-    });
-  }
+  // function updateSlideStyles(swiper) {
+  //   swiper.slides.forEach((slide, index) => {
+  //     if (index > swiper.activeIndex + 2) {
+  //       slide.classList.add('slide-dimmed');
+  //     } else {
+  //       slide.classList.remove('slide-dimmed');
+  //     }
+  //   });
+  // }
 
-  const container = document.querySelector('.reviews .container')
-  const plug = document.querySelector('.reviews .plug')
-  if(window.innerWidth >= 1368) {
-    plug.style.width = ((document.documentElement.clientWidth - container.offsetWidth) / 2) + 252 + `px`
-  }
-   else {
-    plug.style.width = ((document.documentElement.clientWidth - container.offsetWidth) / 2) + 242 + `px`
-  }
-
-  if(window.innerWidth > 1199) {
-    const counterValue = document.querySelector('.reviews__slider-counter-value')
-    const counterSum = document.querySelector('.reviews__slider-counter-sum')
-
-    if (counterValue && counterSum) {
-      counterSum.textContent = String(swiper.slides.length).padStart(2, '0')
-      counterValue.textContent = String(swiper.realIndex + 1).padStart(2, '0')
-
-      swiper.on('slideChange', () => {
-        setTimeout(() => {
-          counterValue.textContent = String(swiper.realIndex + 1).padStart(2, '0')
-        }, 320)
-      })
-    }
-  } else  {
-    if(document.querySelector('.reviews__slider-info')) document.querySelector('.reviews__slider-info').remove()
-  }
+  // const container = document.querySelector('.reviews .container')
+  // const plug = document.querySelector('.reviews .plug')
+  // if(window.innerWidth >= 1368) {
+  //   plug.style.width = ((document.documentElement.clientWidth - container.offsetWidth) / 2) + 252 + `px`
+  // }
+  //  else {
+  //   plug.style.width = ((document.documentElement.clientWidth - container.offsetWidth) / 2) + 242 + `px`
+  // }
+  //
+  // if(window.innerWidth > 1199) {
+  //   const counterValue = document.querySelector('.reviews__slider-counter-value')
+  //   const counterSum = document.querySelector('.reviews__slider-counter-sum')
+  //
+  //   if (counterValue && counterSum) {
+  //     counterSum.textContent = String(swiper.slides.length).padStart(2, '0')
+  //     counterValue.textContent = String(swiper.realIndex + 1).padStart(2, '0')
+  //
+  //     swiper.on('slideChange', () => {
+  //       setTimeout(() => {
+  //         counterValue.textContent = String(swiper.realIndex + 1).padStart(2, '0')
+  //       }, 320)
+  //     })
+  //   }
+  // } else  {
+  //   if(document.querySelector('.reviews__slider-info')) document.querySelector('.reviews__slider-info').remove()
+  // }
 }
