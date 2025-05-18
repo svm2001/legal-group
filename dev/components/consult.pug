@@ -12,6 +12,7 @@ mixin consult(props = defaultConsultProps, ...dataset)
   section.consult(class=`${checkProps.classes}`)&attributes(...dataset)
       .container
           .consult__inner
+              img.consult__image.lazy(data-src='./images/woman.png', src='./images/no-image.jpg' alt='Лигал Групп' )
               h2 Запишитесь онлайн
                 br
                 | на бесплатную консультацию
